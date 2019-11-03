@@ -8,6 +8,7 @@ import { JwtHelperService} from '@auth0/angular-jwt';
 export class AuthService {
   baseUrl = "https://localhost:44378/api/auth/";
   jwtHelper = new JwtHelperService();
+  decodedToken: any;
 
   constructor(private apiservice: HttpClient) {}
 
@@ -19,6 +20,10 @@ export class AuthService {
 
         if (userToken) {
           localStorage.setItem('token', userToken.token);
+
+          // Decode the token so that we get the information inside the token
+          // E.g we can use it to reflect the user`s name when they are logged in
+          this.decodedToken = this.jwtHelper.decodeToken(userToken.token);
         }
       })
     );
