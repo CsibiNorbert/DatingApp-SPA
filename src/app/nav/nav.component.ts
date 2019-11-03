@@ -28,13 +28,14 @@ export class NavComponent implements OnInit {
   }
 
   logout() {
+
+    // This is not a security risk, because our server creates the token and validates the token
+    // We cannot validate the token on the client side, currently we validate it into our server
     localStorage.removeItem('token');
     this.alertify.message('logged out');
   }
 
   isLoggedIn() {
-    const token = localStorage.getItem('token');
-    // if is something in this token will return true, otherwise return false
-    return !!token;
+    return this.authService.isLoggedIn();
   }
 }

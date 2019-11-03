@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core"; // Allows us to inject things into our service
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
-
+import { JwtHelperService} from '@auth0/angular-jwt';
 @Injectable({
   providedIn: "root" // This is telling that in which module the service is provided
 })
 export class AuthService {
   baseUrl = "https://localhost:44378/api/auth/";
+  jwtHelper = new JwtHelperService();
 
   constructor(private apiservice: HttpClient) {}
 
@@ -25,5 +26,12 @@ export class AuthService {
 
   register(registerModel: any){
     return this.apiservice.post(this.baseUrl + 'register', registerModel);
+  }
+
+  isLoggedIn() {
+    const token = localStorage.getItem('token');
+
+    // Check if token is expired
+    return !this.jwtHelper.isTokenExpired(token);
   }
 }
