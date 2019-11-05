@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  // This is used to get the base URL
+  // The benefit of this is when we publish the app, it will run in prod mod,
+  // so we dont have to change our base url to each service
+  apiUrl: 'https://localhost:44378/api/'
 };
 
 /*
