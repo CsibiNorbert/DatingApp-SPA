@@ -4,6 +4,7 @@ import { MemberListComponent } from './members/member-list/member-list.component
 import { MessagesComponent } from './messages/messages.component';
 import { ListsComponent } from './lists/lists.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 
 // Array of routes
 // ORDERING IS IMPORTANT
@@ -23,6 +24,10 @@ export const appRoutes: Routes = [
         path: 'members',
         component: MemberListComponent
         // canActivate: [AuthGuard] specification of our guards. We have only 1 This needs to be added everywhere
+      },
+      {
+        path: 'members/:id', // which is how we specified the route parameter in the loadUder in member-details
+        component: MemberDetailComponent
       },
       {
         path: 'messages',

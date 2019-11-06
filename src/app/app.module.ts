@@ -17,6 +17,7 @@ import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { appRoutes } from './routes';
 import { MemberCardComponent } from 'src/app/members/member-card/member-card.component';
+import { MemberDetailComponent } from 'src/app/members/member-detail/member-detail.component';
 
 // we use this function to use it in the jwtmodule
 // Any request will have this automatically added
@@ -33,7 +34,8 @@ export function tokGetter() {
     MemberListComponent,
     ListsComponent,
     MessagesComponent,
-    MemberCardComponent
+    MemberCardComponent,
+    MemberDetailComponent
   ],
   imports: [
     BrowserModule,
