@@ -4,12 +4,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../_models/User';
 
-// temporary solution to send token to the server
+/* temporary solution to send token to the server, This is no longer needed because we use the jwt in the app module
 const httpOptions = {
   headers: new HttpHeaders({
     'Authorization': 'Bearer ' + localStorage.getItem('token')
   })
-};
+};*/
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +20,12 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getUser(id): Observable<User> {
-    return this.http.get<User>(this.baseUrl + 'users/' + id,httpOptions );
+    return this.http.get<User>(this.baseUrl + 'users/' + id /*,httpOptions*/ );
   }
 
   // If we return observable of type N
   // The get should be specified with type N as well
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl + 'users', httpOptions);
+    return this.http.get<User[]>(this.baseUrl + 'users'/*, httpOptions*/);
   }
 }
