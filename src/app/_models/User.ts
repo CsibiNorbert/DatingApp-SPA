@@ -16,7 +16,7 @@ export interface User {
 
   // UserForDetailedDto
   interests?: string;
-  introductio?: string;
-  lookingfor?: string;
+  introduction?: string;
+  lookingFor?: string;
   photos?: Photo[];
 }
