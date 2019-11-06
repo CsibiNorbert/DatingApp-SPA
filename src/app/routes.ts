@@ -5,6 +5,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { ListsComponent } from './lists/lists.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { MemberListResolver } from './_resolvers/member-list.resolver';
 
 // Array of routes
 // ORDERING IS IMPORTANT
@@ -22,12 +24,14 @@ export const appRoutes: Routes = [
     children: [
       {
         path: 'members',
-        component: MemberListComponent
+        component: MemberListComponent,
+        resolve: { users: MemberListResolver }
         // canActivate: [AuthGuard] specification of our guards. We have only 1 This needs to be added everywhere
       },
       {
         path: 'members/:id', // which is how we specified the route parameter in the loadUder in member-details
-        component: MemberDetailComponent
+        component: MemberDetailComponent,
+        resolve: { user: MemberDetailResolver } // this is the resolver for geting the id for specific user in the router.data
       },
       {
         path: 'messages',

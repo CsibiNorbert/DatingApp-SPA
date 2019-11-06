@@ -18,18 +18,22 @@ export class MemberDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.loadUser();
+    // we will get our id from the resolver for the member id
+    this.route.data.subscribe(data => {
+      this.user = data['user']; // This user is specified in the routes resolver
+    });
   }
 
   // Members/4, We can bring the 4 with the activated route
   // The + is forcing to be a number
-  loadUser() {
-    this.userService
-      .getUser(+this.route.snapshot.params['id'])
-      .subscribe((user: User) => {
+  /*loadUser() {
+    this.userService.getUser(+this.route.snapshot.params['id']).subscribe(
+      (user: User) => {
         this.user = user;
-      }, error => {
+      },
+      error => {
         this.alertify.error(error);
-      });
-  }
+      }
+    );
+  }*/
 }
