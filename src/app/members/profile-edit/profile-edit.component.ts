@@ -3,6 +3,8 @@ import { User } from 'src/app/_models/User';
 import { ActivatedRoute } from '@angular/router';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { NgForm } from '@angular/forms';
+import { UserService } from 'src/app/_services/user.service';
+import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
   selector: 'app-profile-edit',
@@ -27,7 +29,9 @@ export class ProfileEditComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private alertify: AlertifyService
+    private alertify: AlertifyService,
+    private userService: UserService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -38,11 +42,22 @@ export class ProfileEditComponent implements OnInit {
   }
 
   updateUserProfile() {
-    console.log(this.user);
-    this.alertify.success('Profile Saved Successfully');
+    // we get our token id from the authService.
+    this.userService
+      .updateUser(this.authService.decodedToken.nameid, this.user)
+      .subscribe(
+        next => {
+          // Once the user has been updated successfully
 
-    // this is to reset the current state of the form
-    // So that the alert will dissapear & the button will be back to disabled
-    this.editForm.reset(this.user);
+          this.alertify.success('Profile Saved Successfully');
+
+          // this is to reset the current state of the form
+          // So that the alert will dissapear & the button will be back to disabled
+          this.editForm.reset(this.user);
+        },
+        error => {
+          this.alertify.error(error);
+        }
+      );
   }
 }
