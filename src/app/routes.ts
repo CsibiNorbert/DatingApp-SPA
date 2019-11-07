@@ -9,6 +9,7 @@ import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { ProfileEditComponent } from './members/profile-edit/profile-edit.component';
 import { ProfileEditResolver } from './_resolvers/profile-edit.resolver';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 // Array of routes
 // ORDERING IS IMPORTANT
@@ -38,7 +39,8 @@ export const appRoutes: Routes = [
       {
         path: 'member/edit',
         component: ProfileEditComponent,
-        resolve: { user: ProfileEditResolver }
+        resolve: { user: ProfileEditResolver },
+        canDeactivate: [PreventUnsavedChanges]
       },
       {
         path: 'messages',

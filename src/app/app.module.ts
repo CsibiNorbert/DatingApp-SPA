@@ -30,6 +30,7 @@ import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { ProfileEditComponent } from './members/profile-edit/profile-edit.component';
 import { ProfileEditResolver } from './_resolvers/profile-edit.resolver';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 // we use this function to use it in the jwtmodule
 // Any request will have this automatically added
@@ -78,6 +79,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     ErrorInterceptorProvider,
     AlertifyService,
     AuthGuard,
+    PreventUnsavedChanges,
     MemberDetailResolver,
     MemberListResolver,
     ProfileEditResolver,
