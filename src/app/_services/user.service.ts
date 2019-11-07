@@ -20,16 +20,16 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getUser(id): Observable<User> {
-    return this.http.get<User>(this.baseUrl + 'users/' + id /*,httpOptions*/ );
+    return this.http.get<User>(this.baseUrl + 'users/' + id /*,httpOptions*/);
   }
 
   // If we return observable of type N
   // The get should be specified with type N as well
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl + 'users'/*, httpOptions*/);
+    return this.http.get<User[]>(this.baseUrl + 'users' /*, httpOptions*/);
   }
 
-  updateUser(id:number, user: User){
+  updateUser(id: number, user: User) {
     // In the body of the request we pass the user object
     return this.http.put(this.baseUrl + 'users/' + id, user);
   }
