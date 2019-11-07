@@ -7,6 +7,8 @@ import { AuthGuard } from './_guards/auth.guard';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
+import { ProfileEditComponent } from './members/profile-edit/profile-edit.component';
+import { ProfileEditResolver } from './_resolvers/profile-edit.resolver';
 
 // Array of routes
 // ORDERING IS IMPORTANT
@@ -32,6 +34,11 @@ export const appRoutes: Routes = [
         path: 'members/:id', // which is how we specified the route parameter in the loadUder in member-details
         component: MemberDetailComponent,
         resolve: { user: MemberDetailResolver } // this is the resolver for geting the id for specific user in the router.data
+      },
+      {
+        path: 'member/edit',
+        component: ProfileEditComponent,
+        resolve: { user: ProfileEditResolver }
       },
       {
         path: 'messages',

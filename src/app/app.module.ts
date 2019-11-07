@@ -28,6 +28,8 @@ import { AlertifyService } from './_services/alertify.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
+import { ProfileEditComponent } from './members/profile-edit/profile-edit.component';
+import { ProfileEditResolver } from './_resolvers/profile-edit.resolver';
 
 // we use this function to use it in the jwtmodule
 // Any request will have this automatically added
@@ -52,7 +54,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
     ListsComponent,
     MessagesComponent,
     MemberCardComponent,
-    MemberDetailComponent
+    MemberDetailComponent,
+    ProfileEditComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +80,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     AuthGuard,
     MemberDetailResolver,
     MemberListResolver,
+    ProfileEditResolver,
     { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
   ],
   bootstrap: [AppComponent]
