@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Photo } from 'src/app/_models/Photo';
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from 'src/environments/environment';
@@ -19,7 +19,7 @@ export class PhotoEditorComponent implements OnInit {
   // EventEmitter because output prop emits an event
   // We emit a string because we emit the photo url
   // There are 4 stages of output
-  // 1) declare output, 2) emit the event 
+  // 1) declare output, 2) emit the event
   // 3) parent component template. Use parenthessis with the output declaration and assign a method which is inside the parent component
   // And we pass in $event, which contains the data
   // 4) Create the method from above in the parent component.
@@ -124,7 +124,15 @@ export class PhotoEditorComponent implements OnInit {
           if (this.currentMain) {
             this.currentMain.isMain = false;
             photo.isMain = true;
-            this.getMemberPhotoChange.emit(photo.url);
+            this.authService.changeMemberPhoto(photo.url);
+            // we set the new url for the user in authService
+            this.authService.currentUser.photoUrl = photo.url;
+
+            // Then in local storage we are going to override the current url in the local storage
+            localStorage.setItem(
+              'user',
+              JSON.stringify(this.authService.currentUser)
+            );
             this.alertify.success('Successfully set to profile picture');
           }
         },
@@ -132,5 +140,21 @@ export class PhotoEditorComponent implements OnInit {
           this.alertify.error('Photo could not be set as profile picture');
         }
       );
+  }
+
+  // Id represents the photo id
+  deletePhoto(id: number) {
+    this.alertify.confirm('You want to delete this photo?', () => {
+      this.userService
+        .deletePhoto(this.authService.decodedToken.nameid, id)
+        .subscribe(() => {
+          // remove the photos from the photos array
+          // Splice removes elements from an array
+          this.photos.splice(this.photos.findIndex(p => p.id === id), 1);
+          this.alertify.success('Photo has been deleted');
+        }, error => {
+          this.alertify.error('Failed to delete the photo');
+        });
+    });
   }
 }

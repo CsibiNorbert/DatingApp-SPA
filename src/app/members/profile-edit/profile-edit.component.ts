@@ -15,6 +15,7 @@ export class ProfileEditComponent implements OnInit {
   @ViewChild('editForm', { static: true }) editForm: NgForm;
 
   user: User;
+  photoUrl: string;
 
   // This will prevent user if accidentally will close the browser
   @HostListener('window:beforeunload', ['$event'])
@@ -38,6 +39,10 @@ export class ProfileEditComponent implements OnInit {
     // Retrieving our user details
     this.route.data.subscribe(data => {
       this.user = data['user'];
+    });
+
+    this.authService.currentPhotoUrl.subscribe(photoUrl => {
+      this.photoUrl = photoUrl;
     });
   }
 
