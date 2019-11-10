@@ -4,3 +4,11 @@
     /* margin for buttons*/
     margin-bottom: 2px;
 }
+
+.nv-file-over{
+    border: dotted 3px red;
+}
+
+input[type=file]{
+    color: transparent; /* this is how we hide the text */
+}

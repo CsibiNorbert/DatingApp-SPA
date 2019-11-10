@@ -8,48 +8,57 @@
 @import '../node_modules/alertifyjs/build/css/alertify.min.css';
 @import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
 
-.tab-panel{
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 4px;
+.tab-panel {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
 }
 
-.nav-tabs > li.open, .tabset-member > .nav-tabs > li:hover {
-    border-bottom: 4px solid #9536ec4f;
+.nav-tabs > li.open,
+.tabset-member > .nav-tabs > li:hover {
+  border-bottom: 4px solid #9536ec4f;
 }
 
-.tabset-member > .nav-tabs > li.open > a, .tabset-member > .nav-tabs > li:hover > a {
-    border: 0;
-    background: none !important;
-    color: #333333;
+.tabset-member > .nav-tabs > li.open > a,
+.tabset-member > .nav-tabs > li:hover > a {
+  border: 0;
+  background: none !important;
+  color: #333333;
 }
 
-.tabset-member > .nav-tabs > li.open > a > i, .tabset-member > .nav-tabs > li:hover > a > i {
-    color: #a6a6a6;
+.tabset-member > .nav-tabs > li.open > a > i,
+.tabset-member > .nav-tabs > li:hover > a > i {
+  color: #a6a6a6;
 }
 
-.tabset-member > .nav-tabs > li.open .dropdown-menu, .tabset-member > .nav-tabs > li:hover .dropdown-menu {
-    margin-top: 0px;
+.tabset-member > .nav-tabs > li.open .dropdown-menu,
+.tabset-member > .nav-tabs > li:hover .dropdown-menu {
+  margin-top: 0px;
 }
 
 .tabset-member > .nav-tabs > li.active {
-    border-bottom: 4px solid #9536ec;
-    position: relative;
+  border-bottom: 4px solid #9536ec;
+  position: relative;
 }
 
 .tabset-member > .nav-tabs > li.active > a {
-    border: 0 !important;
-    color: #333333;
+  border: 0 !important;
+  color: #333333;
 }
 
 .tabset-member > .nav-tabs > li.active > a > i {
-    color: #404040;
+  color: #404040;
 }
 
 .tabset-member > .tab-content {
-    margin-top: -3px;
-    background-color: #fff;
-    border: 0;
-    border-top: 1px solid #eee;
-    padding: 15px 0;
+  margin-top: -3px;
+  background-color: #fff;
+  border: 0;
+  border-top: 1px solid #eee;
+  padding: 15px 0;
+}
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
 }

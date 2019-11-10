@@ -33,4 +33,13 @@ export class UserService {
     // In the body of the request we pass the user object
     return this.http.put(this.baseUrl + 'users/' + id, user);
   }
+
+  // id represents the photo id
+  // a post request expects to send something in the body. This is an empty object because we don`t want to send anything
+  setMainPhoto(userId: number, id: number) {
+    return this.http.post(
+      this.baseUrl + 'users/' + userId + '/photos/' + id + '/setMain',
+      {}
+    );
+  }
 }

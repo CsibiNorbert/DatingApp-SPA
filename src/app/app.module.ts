@@ -32,6 +32,7 @@ import { ProfileEditComponent } from './members/profile-edit/profile-edit.compon
 import { ProfileEditResolver } from './_resolvers/profile-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 // we use this function to use it in the jwtmodule
 // Any request will have this automatically added
@@ -58,13 +59,14 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberCardComponent,
     MemberDetailComponent,
     ProfileEditComponent,
-    PhotoEditorComponent
+    PhotoEditorComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     NgxGalleryModule,
+    FileUploadModule,
     TabsModule.forRoot(),
     BsDropdownModule.forRoot(),
     RouterModule.forRoot(appRoutes), // we add our routes
