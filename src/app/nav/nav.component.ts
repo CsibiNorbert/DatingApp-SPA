@@ -42,6 +42,10 @@ export class NavComponent implements OnInit {
     // This is not a security risk, because our server creates the token and validates the token
     // We cannot validate the token on the client side, currently we validate it into our server
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    // make sure the decodedToken is empty after we removed it from local storage
+    this.authService.decodedToken = null;
+    this.authService.currentUser = null;
 
     this.alertify.message('logged out');
     this.router.navigate(['/home']);
