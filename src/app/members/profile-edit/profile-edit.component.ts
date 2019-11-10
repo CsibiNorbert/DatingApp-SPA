@@ -60,4 +60,8 @@ export class ProfileEditComponent implements OnInit {
         }
       );
   }
+
+  updateMainPhoto(photoUrl) {
+    this.user.photoUrl = photoUrl;
+  }
 }

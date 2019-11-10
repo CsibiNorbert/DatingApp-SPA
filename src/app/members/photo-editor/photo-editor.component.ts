@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import { Photo } from 'src/app/_models/Photo';
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from 'src/environments/environment';
@@ -14,6 +14,16 @@ import { UserService } from 'src/app/_services/user.service';
 export class PhotoEditorComponent implements OnInit {
   // we bring something from the parent component
   @Input() photos: Photo[];
+
+  // Update the parent component from the child component
+  // EventEmitter because output prop emits an event
+  // We emit a string because we emit the photo url
+  // There are 4 stages of output
+  // 1) declare output, 2) emit the event 
+  // 3) parent component template. Use parenthessis with the output declaration and assign a method which is inside the parent component
+  // And we pass in $event, which contains the data
+  // 4) Create the method from above in the parent component.
+  @Output() getMemberPhotoChange = new EventEmitter<string>();
 
   baseUrl = environment.apiUrl;
 
@@ -114,6 +124,7 @@ export class PhotoEditorComponent implements OnInit {
           if (this.currentMain) {
             this.currentMain.isMain = false;
             photo.isMain = true;
+            this.getMemberPhotoChange.emit(photo.url);
             this.alertify.success('Successfully set to profile picture');
           }
         },
