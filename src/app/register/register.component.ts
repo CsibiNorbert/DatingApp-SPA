@@ -7,6 +7,7 @@ import {
   Validators,
   FormBuilder
 } from '@angular/forms';
+import { BsDatepickerConfig } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-register',
@@ -18,6 +19,10 @@ export class RegisterComponent implements OnInit {
 
   registerModel: any = {};
   registerForm: FormGroup;
+  // We declare it partial because we don`t want to initialize everything in the date picker
+  // Partial class means all of the prop are optional
+  bsConfig: Partial<BsDatepickerConfig>;
+  colorDatePickerTheme = 'theme-dark-blue';
 
   constructor(
     private authService: AuthService,
@@ -26,6 +31,9 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.bsConfig = Object.assign({
+      containerClass: this.colorDatePickerTheme
+    });
     this.createRegisterForm();
   }
 
