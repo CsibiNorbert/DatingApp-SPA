@@ -35,6 +35,7 @@ import { ProfileEditResolver } from './_resolvers/profile-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 // we use this function to use it in the jwtmodule
 // Any request will have this automatically added
@@ -62,6 +63,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberDetailComponent,
     ProfileEditComponent,
     PhotoEditorComponent,
+    TimeAgoPipe
   ],
   imports: [
     BrowserModule,
