@@ -37,6 +37,7 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
 import { FileUploadModule } from 'ng2-file-upload';
 import { TimeAgoPipe } from 'time-ago-pipe';
 import { PaginationModule } from 'ngx-bootstrap';
+import { ButtonsModule } from 'ngx-bootstrap';
 
 // we use this function to use it in the jwtmodule
 // Any request will have this automatically added
@@ -74,6 +75,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     ReactiveFormsModule,
     NgxGalleryModule,
     FileUploadModule,
+    ButtonsModule.forRoot(),
     PaginationModule.forRoot(),
     BsDatepickerModule.forRoot(),
     TabsModule.forRoot(),

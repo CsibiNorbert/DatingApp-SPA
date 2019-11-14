@@ -48,6 +48,7 @@ export class UserService {
       params = params.append("minAge", userParams.minAge);
       params = params.append("maxAge", userParams.maxAge);
       params = params.append("gender", userParams.gender);
+      params = params.append("orderBy", userParams.orderBy);
     }
     // the observe response will give us the full view of http response
     // Map allows us to manipulate what is coming back

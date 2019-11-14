@@ -41,9 +41,11 @@ export class MemberListComponent implements OnInit {
   }
 
   resetFilters() {
+    // After the . dot, we are adding new parameters
     this.userParams.gender = this.user.gender === "female" ? "male" : "female";
     this.userParams.minAge = 18;
     this.userParams.maxAge = 99;
+    this.userParams.orderBy = 'lastActive'; // the default ordering that is set in the API
 
     // Will take this values and it will passed them in into our load users
     this.loadUsers();
