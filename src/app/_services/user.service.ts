@@ -27,7 +27,11 @@ export class UserService {
 
   // If we return observable of type N
   // The get should be specified with type N as well
-  getUsers(page?, itemsPerPage?): Observable<PaginatedResult<User[]>> {
+  getUsers(
+    page?,
+    itemsPerPage?,
+    userParams?
+  ): Observable<PaginatedResult<User[]>> {
     // create the type of PaginatedResult and the a new instance of it
     const paginatedResult: PaginatedResult<User[]> = new PaginatedResult<
       User[]
@@ -38,6 +42,12 @@ export class UserService {
     if (page != null && itemsPerPage != null) {
       params = params.append("pageNumber", page);
       params = params.append("pageSize", itemsPerPage);
+    }
+
+    if (userParams != null) {
+      params = params.append("minAge", userParams.minAge);
+      params = params.append("maxAge", userParams.maxAge);
+      params = params.append("gender", userParams.gender);
     }
     // the observe response will give us the full view of http response
     // Map allows us to manipulate what is coming back
