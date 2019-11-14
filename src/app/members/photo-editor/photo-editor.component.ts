@@ -56,18 +56,6 @@ export class PhotoEditorComponent implements OnInit {
         this.authService.decodedToken.nameid +
         '/photos', // we need the user id
       authToken: 'Bearer ' + localStorage.getItem('token'), // we need to pass the token
-      disableMultipart: true, // 'DisableMultipart' must be 'true' for formatDataFunction to be called.
-      formatDataFunctionIsAsync: true,
-      formatDataFunction: async item => {
-        return new Promise((resolve, reject) => {
-          resolve({
-            name: item._file.name,
-            length: item._file.size,
-            contentType: item._file.type,
-            date: new Date()
-          });
-        });
-      },
       allowedMimeType: ['image/jpeg', 'images', 'png', 'jpg'],
       maxFileSize: 10 * 1024 * 1024, // it will make the maximum file size of 10mbs
       autoUpload: false, // click a button in order to send this up
