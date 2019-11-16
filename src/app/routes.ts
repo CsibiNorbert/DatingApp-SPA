@@ -11,6 +11,7 @@ import { ProfileEditComponent } from './members/profile-edit/profile-edit.compon
 import { ProfileEditResolver } from './_resolvers/profile-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { ListsResolver } from './_resolvers/lists.resolver';
+import { MessageResolver } from './_resolvers/message.resolver';
 
 // Array of routes
 // ORDERING IS IMPORTANT
@@ -45,7 +46,8 @@ export const appRoutes: Routes = [
       },
       {
         path: 'messages',
-        component: MessagesComponent
+        component: MessagesComponent,
+        resolve: { messages: MessageResolver}
       },
       {
         path: 'lists',

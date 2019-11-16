@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { User } from "../_models/User";
 import { PaginatedResult } from "../_models/Pagination";
 import { map } from "rxjs/operators";
+import { Message } from "../_models/message";
 
 /* temporary solution to send token to the server, This is no longer needed because we use the jwt in the app module
 const httpOptions = {
@@ -100,5 +101,38 @@ export class UserService {
       this.baseUrl + "users/" + id + "/like/" + recipientId,
       {}
     );
+  }
+
+  getMessages(userId: number, page?, itemsPerPage?, messageContainer?) {
+    const paginatedResult: PaginatedResult<Message[]> = new PaginatedResult<
+      Message[]
+    >();
+
+    let params = new HttpParams();
+
+    params = params.append("MessageContainer", messageContainer);
+
+    if (page != null && itemsPerPage != null) {
+      params = params.append("pageNumber", page);
+      params = params.append("pageSize", itemsPerPage);
+    }
+
+    return this.http
+      .get<Message[]>(this.baseUrl + "users/" + userId + "/messages", {
+        observe: "response",
+        params
+      })
+      .pipe(
+        map(response => {
+          paginatedResult.result = response.body; // list of messages
+          if (response.headers.get("pagination") != null) {
+            paginatedResult.pagination = JSON.parse(
+              response.headers.get("pagination")
+            ); // get JSON string into an object so that we store it in the pagination
+          }
+
+          return paginatedResult;
+        })
+      );
   }
 }

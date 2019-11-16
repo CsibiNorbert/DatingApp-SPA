@@ -39,6 +39,7 @@ import { TimeAgoPipe } from 'time-ago-pipe';
 import { PaginationModule } from 'ngx-bootstrap';
 import { ButtonsModule } from 'ngx-bootstrap';
 import { ListsResolver } from './_resolvers/lists.resolver';
+import { MessageResolver } from './_resolvers/message.resolver';
 
 // we use this function to use it in the jwtmodule
 // Any request will have this automatically added
@@ -100,6 +101,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberListResolver,
     ProfileEditResolver,
     ListsResolver,
+    MessageResolver,
     { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
   ],
   bootstrap: [AppComponent]
