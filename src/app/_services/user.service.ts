@@ -84,4 +84,9 @@ export class UserService {
   deletePhoto(userId: number, id: number) {
     return this.http.delete(this.baseUrl + "users/" + userId + "/photos/" + id);
   }
+
+  sendLike(id: number, recipientId: number) {
+    // parameters shuld match the API`s parameters
+    return this.http.post(this.baseUrl + "users/" + id + "/like/" + recipientId, {});
+  }
 }
