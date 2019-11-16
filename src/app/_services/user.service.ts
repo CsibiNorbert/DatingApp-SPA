@@ -30,7 +30,8 @@ export class UserService {
   getUsers(
     page?,
     itemsPerPage?,
-    userParams?
+    userParams?,
+    likesParam?
   ): Observable<PaginatedResult<User[]>> {
     // create the type of PaginatedResult and the a new instance of it
     const paginatedResult: PaginatedResult<User[]> = new PaginatedResult<
@@ -49,6 +50,14 @@ export class UserService {
       params = params.append("maxAge", userParams.maxAge);
       params = params.append("gender", userParams.gender);
       params = params.append("orderBy", userParams.orderBy);
+    }
+
+    if (likesParam === "Likers") {
+      params = params.append("likers", "true");
+    }
+
+    if (likesParam === "Likees") {
+      params = params.append("likees", "true");
     }
     // the observe response will give us the full view of http response
     // Map allows us to manipulate what is coming back
@@ -87,6 +96,9 @@ export class UserService {
 
   sendLike(id: number, recipientId: number) {
     // parameters shuld match the API`s parameters
-    return this.http.post(this.baseUrl + "users/" + id + "/like/" + recipientId, {});
+    return this.http.post(
+      this.baseUrl + "users/" + id + "/like/" + recipientId,
+      {}
+    );
   }
 }

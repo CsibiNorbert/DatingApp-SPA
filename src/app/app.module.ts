@@ -38,6 +38,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { TimeAgoPipe } from 'time-ago-pipe';
 import { PaginationModule } from 'ngx-bootstrap';
 import { ButtonsModule } from 'ngx-bootstrap';
+import { ListsResolver } from './_resolvers/lists.resolver';
 
 // we use this function to use it in the jwtmodule
 // Any request will have this automatically added
@@ -98,6 +99,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberDetailResolver,
     MemberListResolver,
     ProfileEditResolver,
+    ListsResolver,
     { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
   ],
   bootstrap: [AppComponent]

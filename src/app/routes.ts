@@ -10,6 +10,7 @@ import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { ProfileEditComponent } from './members/profile-edit/profile-edit.component';
 import { ProfileEditResolver } from './_resolvers/profile-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { ListsResolver } from './_resolvers/lists.resolver';
 
 // Array of routes
 // ORDERING IS IMPORTANT
@@ -48,7 +49,8 @@ export const appRoutes: Routes = [
       },
       {
         path: 'lists',
-        component: ListsComponent
+        component: ListsComponent,
+        resolve: {users: ListsResolver}
       }
     ]
   },
