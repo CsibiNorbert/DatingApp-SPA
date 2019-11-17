@@ -147,4 +147,9 @@ export class UserService {
   deleteMessage(messageId: number, userId:number){
     return this.http.post(this.baseUrl + 'users/' + userId + '/messages/' + messageId, {});
   }
+
+  // This method is being subscribed here because we don`t want to return something, just to mark each individual message as read
+  markAsRead(userId: number, messageId: number){
+    return this.http.post(this.baseUrl + 'users/' + userId + '/messages/' + messageId + '/read', {}).subscribe();
+  }
 }

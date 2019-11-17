@@ -67,7 +67,8 @@
         </td>
         <td>{{ message.messageSent | timeAgo }}</td>
         <td>
-          <!-- The stopPropagation will stop us from being navigated when we click the delete button -->
+          <!-- The stopPropagation will stop us from being navigated when we click the delete button 
+          -->
           <button class="btn btn-danger" (click)="$event.stopPropagation()"  (click)="deleteMessage(message.id)">Delete</button>
         </td>
       </tr>
