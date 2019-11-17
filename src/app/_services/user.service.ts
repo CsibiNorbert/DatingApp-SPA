@@ -143,4 +143,8 @@ export class UserService {
   sendMessage(loggedInUserId: number, message: Message){
     return this.http.post(this.baseUrl+'users/' + loggedInUserId + '/messages', message);
   }
+
+  deleteMessage(messageId: number, userId:number){
+    return this.http.post(this.baseUrl + 'users/' + userId + '/messages/' + messageId, {});
+  }
 }
