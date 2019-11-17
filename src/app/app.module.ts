@@ -40,6 +40,7 @@ import { PaginationModule } from 'ngx-bootstrap';
 import { ButtonsModule } from 'ngx-bootstrap';
 import { ListsResolver } from './_resolvers/lists.resolver';
 import { MessageResolver } from './_resolvers/message.resolver';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 // we use this function to use it in the jwtmodule
 // Any request will have this automatically added
@@ -67,7 +68,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberDetailComponent,
     ProfileEditComponent,
     PhotoEditorComponent,
-    TimeAgoPipe
+    TimeAgoPipe,
+    MemberMessagesComponent
   ],
   imports: [
     BrowserModule,

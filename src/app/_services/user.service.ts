@@ -135,4 +135,12 @@ export class UserService {
         })
       );
   }
+
+  getMessageThread(userId: number, recipientId: number){
+    return  this.http.get<Message[]>(this.baseUrl + 'users/'+userId+'/messages/thread/'+recipientId);
+  }
+
+  sendMessage(loggedInUserId: number, message: Message){
+    return this.http.post(this.baseUrl+'users/' + loggedInUserId + '/messages', message);
+  }
 }
