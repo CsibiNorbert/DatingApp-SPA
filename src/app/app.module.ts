@@ -41,6 +41,7 @@ import { ButtonsModule } from 'ngx-bootstrap';
 import { ListsResolver } from './_resolvers/lists.resolver';
 import { MessageResolver } from './_resolvers/message.resolver';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 // we use this function to use it in the jwtmodule
 // Any request will have this automatically added
@@ -56,42 +57,43 @@ export class CustomHammerConfig extends HammerGestureConfig {
   };
 }
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavComponent,
-    HomeComponent,
-    RegisterComponent,
-    MemberListComponent,
-    ListsComponent,
-    MessagesComponent,
-    MemberCardComponent,
-    MemberDetailComponent,
-    ProfileEditComponent,
-    PhotoEditorComponent,
-    TimeAgoPipe,
-    MemberMessagesComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgxGalleryModule,
-    FileUploadModule,
-    ButtonsModule.forRoot(),
-    PaginationModule.forRoot(),
-    BsDatepickerModule.forRoot(),
-    TabsModule.forRoot(),
-    BsDropdownModule.forRoot(),
-    RouterModule.forRoot(appRoutes), // we add our routes
+   declarations: [
+      AppComponent,
+      NavComponent,
+      HomeComponent,
+      RegisterComponent,
+      MemberListComponent,
+      ListsComponent,
+      MessagesComponent,
+      MemberCardComponent,
+      MemberDetailComponent,
+      ProfileEditComponent,
+      PhotoEditorComponent,
+      TimeAgoPipe,
+      MemberMessagesComponent,
+      AdminPanelComponent
+   ],
+   imports: [
+      BrowserModule,
+      BrowserAnimationsModule,
+      HttpClientModule,
+      FormsModule,
+      ReactiveFormsModule,
+      NgxGalleryModule,
+      FileUploadModule,
+      ButtonsModule.forRoot(),
+      PaginationModule.forRoot(),
+      BsDatepickerModule.forRoot(),
+      TabsModule.forRoot(),
+      BsDropdownModule.forRoot(),
+      RouterModule.forRoot(appRoutes), // we add our routes
     JwtModule.forRoot({
       config: {
         tokenGetter: tokGetter,
         whitelistedDomains: ['localhost:44378'],
         blacklistedRoutes: ['localhost:44378/auth'] // This is the only place we dont want the token to be sent
       }
-    })
+})
   ],
   providers: [
     AuthService,

@@ -12,6 +12,7 @@ import { ProfileEditResolver } from './_resolvers/profile-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { ListsResolver } from './_resolvers/lists.resolver';
 import { MessageResolver } from './_resolvers/message.resolver';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 // Array of routes
 // ORDERING IS IMPORTANT
@@ -53,6 +54,10 @@ export const appRoutes: Routes = [
         path: 'lists',
         component: ListsComponent,
         resolve: {users: ListsResolver}
+      },
+      {
+        path: 'admin',
+        component: AdminPanelComponent
       }
     ]
   },
