@@ -41,8 +41,8 @@ import { ButtonsModule } from 'ngx-bootstrap';
 import { ListsResolver } from './_resolvers/lists.resolver';
 import { MessageResolver } from './_resolvers/message.resolver';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
-import { AdminPanelComponent } from './admin-panel/admin-panel.component';
-
+import { AdminPanelComponent } from './Admin/admin-panel/admin-panel.component';
+import { HasRoleDirective } from './_directives/hasRole.directive';
 // we use this function to use it in the jwtmodule
 // Any request will have this automatically added
 export function tokGetter() {
@@ -71,7 +71,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
       PhotoEditorComponent,
       TimeAgoPipe,
       MemberMessagesComponent,
-      AdminPanelComponent
+      AdminPanelComponent,
+      HasRoleDirective
    ],
    imports: [
       BrowserModule,
