@@ -57,7 +57,10 @@ export const appRoutes: Routes = [
       },
       {
         path: 'admin',
-        component: AdminPanelComponent
+        component: AdminPanelComponent,
+        // we can access the route data from inside the authGuard
+        // In the authGuard we specify which role are allowed for a particular route
+        data: {roles: ['Admin', 'Moderator']}
       }
     ]
   },
