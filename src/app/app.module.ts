@@ -6,7 +6,7 @@ import {
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { BsDropdownModule, ModalModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TabsModule } from 'ngx-bootstrap';
@@ -46,6 +46,7 @@ import { HasRoleDirective } from './_directives/hasRole.directive';
 import { UserManagementComponent } from './Admin/admin-panel/user-management/user-management.component';
 import { PhotoManagementComponent } from './Admin/admin-panel/photo-management/photo-management.component';
 import { AdminService } from './_services/admin.service';
+import { RolesModalComponent } from './Admin/admin-panel/roles-modal/roles-modal.component';
 
 // we use this function to use it in the jwtmodule
 // Any request will have this automatically added
@@ -78,7 +79,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
       AdminPanelComponent,
       HasRoleDirective,
       UserManagementComponent,
-      PhotoManagementComponent
+      PhotoManagementComponent,
+      RolesModalComponent
    ],
    imports: [
       BrowserModule,
@@ -93,6 +95,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
       BsDatepickerModule.forRoot(),
       TabsModule.forRoot(),
       BsDropdownModule.forRoot(),
+      ModalModule.forRoot(),
       RouterModule.forRoot(appRoutes), // we add our routes
     JwtModule.forRoot({
       config: {
@@ -115,6 +118,10 @@ export class CustomHammerConfig extends HammerGestureConfig {
     ListsResolver,
     MessageResolver,
     { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
+  ],
+  // Componenets such as modals should be here.
+  entryComponents:[
+    RolesModalComponent
   ],
   bootstrap: [AppComponent]
 })
