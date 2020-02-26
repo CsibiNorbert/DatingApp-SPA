@@ -43,6 +43,10 @@ import { MessageResolver } from './_resolvers/message.resolver';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 import { AdminPanelComponent } from './Admin/admin-panel/admin-panel.component';
 import { HasRoleDirective } from './_directives/hasRole.directive';
+import { UserManagementComponent } from './Admin/admin-panel/user-management/user-management.component';
+import { PhotoManagementComponent } from './Admin/admin-panel/photo-management/photo-management.component';
+import { AdminService } from './_services/admin.service';
+
 // we use this function to use it in the jwtmodule
 // Any request will have this automatically added
 export function tokGetter() {
@@ -72,7 +76,9 @@ export class CustomHammerConfig extends HammerGestureConfig {
       TimeAgoPipe,
       MemberMessagesComponent,
       AdminPanelComponent,
-      HasRoleDirective
+      HasRoleDirective,
+      UserManagementComponent,
+      PhotoManagementComponent
    ],
    imports: [
       BrowserModule,
@@ -98,6 +104,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
   ],
   providers: [
     AuthService,
+    AdminService,
     ErrorInterceptorProvider,
     AlertifyService,
     AuthGuard,
