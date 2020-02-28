@@ -36,7 +36,26 @@ export class UserManagementComponent implements OnInit {
      roles: this.getRolesArray(user)
     };
     this.bsModalRef = this.modalService.show(RolesModalComponent, {initialState});
-    this.bsModalRef.content.closeBtnName = 'Close';
+    
+    // We subscribe to the output which is in the modal so that we can get the values
+    this.bsModalRef.content.updateSelectedRoles.subscribe((values) => {
+      const rolesToUpdate = {
+        // spread opperator and pass values that are checked
+        // *Spread operator spreads the values into a new array and it`s gonna be assigned to roleNames
+        // The roleName needs to be passed, hence we use map
+        roleNames: [...values.filter( el => el.checked === true).map(el => el.name)]
+      };
+      if (rolesToUpdate) {
+        this.adminService.updateUserRoles(user, rolesToUpdate)
+          .subscribe(()=> {
+            // it will create a new array and it will be passed into the user.roles
+            // And update the browser
+            user.roles = [...rolesToUpdate.roleNames];
+          }, err => {
+            this.alertify.error('An error occured while assigning roles' + err);
+          });
+      }
+    });
   }
 
   private getRolesArray(user){
