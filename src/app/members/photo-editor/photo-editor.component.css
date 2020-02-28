@@ -12,3 +12,16 @@
 input[type=file]{
     color: transparent; /* this is how we hide the text */
 }
+
+.not-approved {
+    opacity: 0.3;
+}
+
+.img-wrapper {
+    position: relative;
+}
+
+.img-text {
+    position: absolute;
+    bottom: 60%;
+}

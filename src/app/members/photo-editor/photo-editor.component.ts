@@ -89,7 +89,8 @@ export class PhotoEditorComponent implements OnInit {
           url: res.url,
           dateadded: res.dateadded,
           description: res.description,
-          isMain: res.isMain
+          isMain: res.isMain,
+          isApproved: res.isApproved
         };
         // possible break for isMain
         this.photos.push(photo);
